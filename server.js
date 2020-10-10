@@ -2,25 +2,36 @@ const express = require('express');
 const app = express();
 
 const hbs = require('hbs');
+/*  PASO 6 usar HELPERS importados 
+son funciones que usamos como variables q estan en otra carpeta
+ puedes usar como parametro alguna variable definida en response.render */
 require('./hbs/helpers')
 
 /* ************************************
-creando puerto de heroku o uno por defecto
+indicamos puerto de heroku o uno por defecto
 ************************************* */
 const port = process.env.PORT || 3000;
 
 /* ************************************
-EJEMPLO PARA PINTAR HTML EN NAVEGADOR
+PASO 2 EJEMPLO MIDDLEWARE con esto hbs 
+podra usar todo los archivos de public como el css
 ************************************* */
 app.use(express.static(__dirname + '/public'));
 
-// Express HBS para renderizar por defecto con hbs y usar variables desde aqui
+// PASO 3 USAR VIEW ENGINE COMO RENDERIZADOR
 app.set('view engine', 'hbs');
+
+// PASO 5 con esto le decimos que tiene un direccitorio (--dirnme +) donde estan todas mis parciales
 hbs.registerPartials(__dirname + '/views/parciales')
 
+/* ************************************
+NOTA  si quieres que ser vean los cambios con nodemon usa 
+nodemon server .e js,hbs,css,html
+************************************* */
 
 /* ************************************
-PRIMER EJEMPLO DE USO HBS RENDERIZADO
+PASO 4 USAR app.get CON UN response.render para indicar el nombre del archivo a renderizar
+TAMBIEN dentro del render podemos crear VARIABLES en un OBJETO para contenido dinamico 
 ************************************* */
 app.get('/', (request, response) => {
 
