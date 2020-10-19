@@ -36,7 +36,7 @@ TAMBIEN dentro del render podemos crear VARIABLES en un OBJETO para contenido di
 app.get('/', (request, response) => {
 
   response.render('home', {
-    saludo: 'hola richard hello'
+    saludo: 'hola richard'
   })
 })
 app.get('/about', (request, response) => {
@@ -47,3 +47,4 @@ app.get('/about', (request, response) => {
 app.listen(port, () => {
   console.log(`Escuchando en el puerto ${port}`);
 });
+
